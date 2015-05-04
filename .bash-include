@@ -1,0 +1,21 @@
+BASH_CUSTOMIZER_SCRIPT="$HOME/.bash-customizer"
+[[ -s $BASH_CUSTOMIZER_SCRIPT ]] && source $BASH_CUSTOMIZER_SCRIPT
+
+NVM_SCRIPT="$HOME/.nvm/nvm.sh"
+if [ -s $NVM_SCRIPT ]
+then
+  . $NVM_SCRIPT            # Add NVM to PATH for scripting
+  nvm use $NODEJS_VERSION  # Switch to a version of node.js
+fi
+
+if [ -d $PYTHON_PACKAGES_DIR ]
+then
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
+  . $PYTHON_PACKAGES_DIR/powerline/bindings/bash/powerline.sh
+fi
+
+GIT_COMPLETION_SCRIPT="$HOME/.git-completion.sh"
+[[ -s $GIT_COMPLETION_SCRIPT ]] && source $GIT_COMPLETION_SCRIPT
+
