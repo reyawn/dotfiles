@@ -1,0 +1,6 @@
+# nodejs version
+export NODEJS_VERSION='iojs-v1.8.1'
+
+# user python package dir
+export PYTHON_PACKAGES_DIR=/usr/local/lib/python2.7/site-packages
+
