@@ -1,5 +1,8 @@
 set mouse=a
 
+" Paste mode
+set paste
+
 " Relative number mode toggling on enter/leave insert mode
 set relativenumber
 autocmd InsertEnter * :set number
