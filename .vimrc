@@ -9,6 +9,8 @@ autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
 
 set t_Co=256
+set encoding=utf8
+set guifont=Knack\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Font\ Awesome\ Plus\ Octicons\ Plus\ Pomicons:h12
 
 set tabstop=2 shiftwidth=2 expandtab
 set laststatus=2
@@ -34,6 +36,7 @@ Plugin 'tpope/vim-bundler'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'drn/zoomwin-vim'
 Plugin 'moll/vim-node'
 Plugin 'othree/yajs.vim'
 Plugin 'L9'
@@ -48,9 +51,9 @@ filetype plugin indent on    " required
 syntax on
 
 " Powerline
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 
 " Use zenburn colorscheme (BundleInstall first for this to work)
 colorscheme zenburn
@@ -64,6 +67,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Devicons
+let g:airline_powerline_fonts=1
 let g:WebDevIconsUnicodeDecorateFolderNodes=1
 let g:webdevicons_conceal_nerdtree_brackets=1
 let g:WebDevIconsNerdTreeAfterGlyphPadding=''
