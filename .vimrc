@@ -10,7 +10,6 @@ autocmd InsertLeave * :set relativenumber
 
 set t_Co=256
 set encoding=utf8
-set guifont=Knack\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Font\ Awesome\ Plus\ Octicons\ Plus\ Pomicons:h12
 
 set tabstop=2 shiftwidth=2 expandtab
 set laststatus=2
@@ -51,9 +50,16 @@ filetype plugin indent on    " required
 syntax on
 
 " Powerline
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
+if exists('python')
+  python from powerline.vim import setup as powerline_setup
+  python powerline_setup()
+  python del powerline_setup
+endif
+if exists('python3')
+  python3 from powerline.vim import setup as powerline_setup
+  python3 powerline_setup()
+  python3 del powerline_setup
+endif
 
 " Use zenburn colorscheme (BundleInstall first for this to work)
 colorscheme zenburn
