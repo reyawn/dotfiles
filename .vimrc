@@ -42,6 +42,8 @@ Plugin 'othree/yajs.vim'
 Plugin 'L9'
 Plugin 'zenburn'
 Plugin 'ryanoasis/vim-webdevicons'
+Plugin 'vim-misc'
+Plugin 'vim-session'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -71,6 +73,9 @@ map <C-n> :NERDTreeToggle<CR>
 " Open automatically when VIM starts up and no files specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" vim-session Don't prompt to save sessions
+:let g:session_autosave = 'no'
 
 " Devicons
 let g:airline_powerline_fonts=1
