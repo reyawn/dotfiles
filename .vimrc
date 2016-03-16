@@ -42,8 +42,8 @@ Plugin 'othree/yajs.vim'
 Plugin 'L9'
 Plugin 'zenburn'
 Plugin 'ryanoasis/vim-webdevicons'
-Plugin 'vim-misc'
-Plugin 'vim-session'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
