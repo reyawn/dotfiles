@@ -1,6 +1,3 @@
-# Export .local/bin in PATH
-export PATH="$HOME/.local/bin:$PATH"
-
 # Load additional stuff
 BASH_CUSTOMIZER_SCRIPT="$HOME/.bash-customizer"
 [[ -s $BASH_CUSTOMIZER_SCRIPT ]] && source $BASH_CUSTOMIZER_SCRIPT
@@ -10,7 +7,6 @@ NVM_SCRIPT="$HOME/.nvm/nvm.sh"
 if [ -s $NVM_SCRIPT ]
 then
   . $NVM_SCRIPT            # Add NVM to PATH for scripting
-# nvm use $NODEJS_VERSION  # Switch to a version of node.js
 fi
 
 # Powerline
@@ -26,17 +22,24 @@ fi
 GIT_COMPLETION_SCRIPT="$HOME/.git-completion.sh"
 [[ -s $GIT_COMPLETION_SCRIPT ]] && source $GIT_COMPLETION_SCRIPT
 
-# GPG configuration
-GPG_TTY=$(tty)
-export GPG_TTY
-
 # Set SSH to use gpg-agent
-unset SSH_AGENT_PID
-if [ -f "${HOME}/.gpg-agent-info" ]; then
-    . "${HOME}/.gpg-agent-info"
-    export GPG_AGENT_INFO
-    export SSH_AUTH_SOCK
-else if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-        export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-    fi
+if [ $GPG_SETUP ]
+then
+  echo 'Setting up GPG...'
+
+  # GPG configuration
+  GPG_TTY=$(tty)
+  export GPG_TTY
+
+  unset SSH_AGENT_PID
+  if [ -f "${HOME}/.gpg-agent-info" ]; then
+      . "${HOME}/.gpg-agent-info"
+      export GPG_AGENT_INFO
+      export SSH_AUTH_SOCK
+  else if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+          export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+      fi
+  fi
+else
+  echo 'Skipping GPG setup...'
 fi
