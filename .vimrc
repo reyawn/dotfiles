@@ -1,8 +1,5 @@
 set mouse=a
 
-" Paste mode
-set paste
-
 " Relative number mode toggling on enter/leave insert mode
 set relativenumber
 autocmd InsertEnter * :set number
@@ -10,60 +7,36 @@ autocmd InsertLeave * :set relativenumber
 
 set t_Co=256
 set encoding=utf8
-set guifont=Knack\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Font\ Awesome\ Plus\ Octicons\ Plus\ Pomicons:h12
 
 set tabstop=2 shiftwidth=2 expandtab
 set laststatus=2
 set showtabline=2
 set noshowmode
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Auto-install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin('~/.vim/plugged')
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-haml'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'drn/zoomwin-vim'
+Plug 'moll/vim-node'
+Plug 'othree/yajs.vim'
+Plug 'jnurmine/Zenburn'
+Plug 'ryanoasis/vim-webdevicons'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+call plug#end()
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-haml'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-bundler'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'drn/zoomwin-vim'
-Plugin 'moll/vim-node'
-Plugin 'othree/yajs.vim'
-Plugin 'L9'
-Plugin 'zenburn'
-Plugin 'ryanoasis/vim-webdevicons'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-session'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
-" Syntax highlighting
-syntax on
-
-" Powerline
-if has('python3')
-  python3 from powerline.vim import setup as powerline_setup
-  python3 powerline_setup()
-  python3 del powerline_setup
-else
-  python from powerline.vim import setup as powerline_setup
-  python powerline_setup()
-  python del powerline_setup
-endif  
-
-" Use zenburn colorscheme (BundleInstall first for this to work)
+" Use zenburn colorscheme (PlugInstall first for this to work)
 colorscheme zenburn
 
 " NERDTree setup
@@ -82,6 +55,9 @@ let g:airline_powerline_fonts=1
 let g:WebDevIconsUnicodeDecorateFolderNodes=1
 let g:webdevicons_conceal_nerdtree_brackets=1
 let g:WebDevIconsNerdTreeAfterGlyphPadding=''
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
 
 " File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
