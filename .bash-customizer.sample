@@ -1,3 +1,9 @@
+## MacOSX-specific config
+# npm config delete prefix
+
+# export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
+
+## Common config
 # user python package dir
 # export PYTHON_PACKAGES_DIR=/usr/local/lib/python2.7/site-packages
 
