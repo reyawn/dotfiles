@@ -4,3 +4,5 @@
 # path
 # PATH="$HOME/.local/bin:$PATH"
 
+# editor
+# export EDITOR=nvim
