@@ -12,7 +12,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Powerline
-if [ -d $PYTHON_PACKAGES_DIR ]
+if [[ -z $PYTHON_PACKAGES_DIR && -d $PYTHON_PACKAGES_DIR ]]
 then
   powerline-daemon -q
   POWERLINE_BASH_CONTINUATION=1
