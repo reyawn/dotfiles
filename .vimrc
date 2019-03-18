@@ -51,10 +51,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 :let g:session_autosave = 'no'
 
 " Devicons
-let g:airline_powerline_fonts=1
-let g:WebDevIconsUnicodeDecorateFolderNodes=1
-let g:webdevicons_conceal_nerdtree_brackets=1
-let g:WebDevIconsNerdTreeAfterGlyphPadding=''
+let g:airline_powerline_fonts = 1
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
