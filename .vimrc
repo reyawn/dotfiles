@@ -34,6 +34,8 @@ Plug 'jnurmine/Zenburn'
 Plug 'ryanoasis/vim-webdevicons'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " Use zenburn colorscheme (PlugInstall first for this to work)
@@ -80,3 +82,6 @@ call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
+
+" FZF setup
+" let g:fzf_command_prefix = 'Fzf'
