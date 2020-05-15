@@ -25,6 +25,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
+Plug 'dense-analysis/ale'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'drn/zoomwin-vim'
@@ -36,7 +37,15 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'Shougo/deoplete.nvim'
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 call plug#end()
+
+call deoplete#custom#option('sources', {
+  \ '_': ['ale'],
+\})
 
 " Use zenburn colorscheme (PlugInstall first for this to work)
 colorscheme zenburn
@@ -51,6 +60,9 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " vim-session Don't prompt to save sessions
 :let g:session_autosave = 'no'
+
+" Enable deoplete at startup
+let g:deoplete#enable_at_startup = 1
 
 " Devicons
 let g:airline_powerline_fonts = 1
